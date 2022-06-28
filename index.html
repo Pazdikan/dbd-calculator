@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="keywords" content="dbd, dead by daylight, emblem, emblems, calculator, pips, grade"/>
+    <meta name="description" content="Survivor emblem points calculator, see what actions you have to do in order to double pip."/>
+    <meta name="language" content="EN">
+    <meta name="author" content="Michał 'Pazdikan' Jurjewicz, pazdikan.party">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pazdikan.party/dbd-calculator">
+    <meta property="og:title" content="Survivor Emblem Calculator">
+    <meta property="og:description" content="See what actions you have to do in order to double pip.">
+    <meta property="og:image" content="https://media.discordapp.net/attachments/758350206013276211/991424512275009646/New_Project.png">
+    <meta name="theme-color" content="#b20800">
+
+    <title>Survivor Emblem Calculator</title>
+
+    <link rel="stylesheet" href="src/styles/index.css">
+</head>
+<body>
+    <div class="emblems">
+        <img src="src/images/benevolent/0.png" alt="" class="emblem" id="benevolentEmblem">
+        <img src="src/images/evader/0.png" alt="" class="emblem" id="evaderEmblem">
+        <img src="src/images/lightbringer/0.png" alt="" class="emblem" id="lightbringerEmblem">
+        <img src="src/images/unbroken/0.png" alt="" class="emblem" id="unbrokenEmblem">
+    </div>
+
+    <div class="summaryYourRank">
+        <label for="summaryYourRank">With rank</label>
+        <select name="summaryYourRank" id="summaryYourRank">
+          <option value="ashIVI">Ash IV-I</option>
+          <option value="bronzeIV">Bronze IV</option>
+          <option value="bronzeIIII">Bronze III-I</option>
+          <option value="silverIVI">Silver IV-I</option>
+          <option value="goldIVI">Gold IV-I</option>
+          <option value="iridescentIVII">Iridescent IV-II</option>
+          <option value="iridescentI">Iridescent I</option>
+        </select>
+    <span id="summaryText">you'll lose -1 pip (De-Pip)</span>
+    </div>
+
+    <div class="menus">
+        <div class="menu show-menu" id="tutorialMenu">
+            <h3>Click emblems to change values!</h3>
+        </div>
+
+        <div class="menu" id="benevolentMenu">
+            <h3>Benevolent actions:</h3>
+
+            <p>
+            <input type="number" id="unhookedSurvivors" name="unhookedSurvivors" value="0" min="0" max="99">
+            <label for="unhookedSurvivors">Safe unhooks</label>
+            </p>
+
+            <p>
+            <input type="number" id="healedSurvivors" name="healedSurvivors" value="0" min="0" max="99">
+            <label for="healedSurvivors">Healed other survivors</label>
+            </p>
+
+            <p>
+            <input type="number" id="protectionHitsForCarriedSurvivor" name="protectionHitsForCarriedSurvivor" value="0" min="0" max="99">
+            <label for="protectionHitsForCarriedSurvivor">Protection hits for carried survivor</label>
+            </p>
+
+            <p>
+            <input type="number" id="rescueForKillerGrasp" name="rescueForKillerGrasp" value="0" min="0" max="99">
+            <label for="rescueForKillerGrasp">Rescued survivors from killer grasp</label>
+            </p>
+
+            <p>
+            <input type="number" id="survivorsSavedFromKillerGraspByHookSabotage" name="survivorsSavedFromKillerGraspByHookSabotage" value="0" min="0" max="99">
+            <label for="survivorsSavedFromKillerGraspByHookSabotage">Survivors wiggled off by hook sabotage (10m)</label>
+            </p>
+        </div>
+        <div class="menu" id="evaderMenu">
+            <h3>Evader actions:</h3>
+
+            <p>
+            <input type="number" id="terrorRadius5Meters" name="terrorRadius5Meters" value="0" min="0" max="1000">
+            <label for="terrorRadius5Meters">Seconds within 5 meters from killer (not in chase)</label>
+            </p>
+
+            <p>
+            <input type="number" id="inChaseSeconds" name="inChaseSeconds" value="0" min="0" max="1000">
+            <label for="inChaseSeconds">Seconds in chase</label>
+            </p>
+
+            <p>
+            <input type="number" id="palletStuns" name="palletStuns" value="0" min="0" max="99">
+            <label for="palletStuns">Stuns with a pallet</label>
+            </p>
+
+            <p>
+            <input type="number" id="hitsInChase" name="hitsInChase" value="0" min="0" max="99">
+            <label for="hitsInChase">Chases ended by the killer hitting you</label>
+            </p>
+
+             <h5 style="color: red;">Chase points aren't accurate, because the bonus for being closer to the killer is not added.</h5>
+        </div>
+        <div class="menu" id="lightbringerMenu">
+            <h3>Lightbringer actions:</h3>
+
+            <p>
+            <input type="number" id="percentOfRepairedGenerator" name="percentOfRepairedGenerator" value="0" min="0" max="999">
+            <label for="percentOfRepairedGenerator">Percent of repaired generators (100 = 1 gen)</label>
+            </p>
+
+            <p>
+            <input type="number" id="generatorsCompletedEntireMatch" name="generatorsCompletedEntireMatch" value="5" min="0" max="99">
+            <label for="generatorsCompletedEntireMatch">Generators repaired by anyone (entire match)</label>
+            </p>
+
+            <p>
+            <input type="number" id="exitGatesOpened" name="exitGatesOpened" value="0" min="0" max="99">
+            <label for="exitGatesOpened">Exit gates opened</label>
+            </p>
+
+            <p>
+            <input type="number" id="cleansedDullTotems" name="cleansedDullTotems" value="0" min="0" max="99">
+            <label for="cleansedDullTotems">Dull totems cleansed</label>
+            </p>
+
+            <p>
+            <input type="number" id="cleansedHexTotems" name="cleansedHexTotems" value="0" min="0" max="99">
+            <label for="cleansedHexTotems">Hex totems cleansed</label>
+            </p>
+        </div>
+        <div class="menu" id="unbrokenMenu">
+            <h3>Unbroken actions:</h3>
+
+            <select name="unbrokenStatus" id="unbrokenStatus">
+              <option value="withoutDown">Escaped without getting downed</option>
+              <option value="withDown">Escaped with getting downed at least once</option>
+              <option value="9minutes">Died after 9 minutes</option>
+              <option value="59minutes">Died between 5-9 minutes</option>
+              <option value="5minutes">Died before 5 minutes</option>
+            </select>
+        </div>
+    </div>
+</body>
+<script src="src/scripts/menu.js"></script>
+<script src="src/scripts/emblems.js"></script>
+</html>
